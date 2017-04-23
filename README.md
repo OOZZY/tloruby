@@ -8,8 +8,15 @@ A Ruby library.
 
 ## Clone and Test
 
+Clone into tloruby directory.
+
 ```
-$ git clone --branch develop <url/to/tloruby.git> # clone into tloruby directory
+$ git clone --branch develop <url/to/tloruby.git>
+```
+
+Run tests.
+
+```
 $ cd tloruby
 $ rake test TESTOPTS='-v'
 ```
