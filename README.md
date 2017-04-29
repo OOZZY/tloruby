@@ -18,5 +18,5 @@ Run tests.
 
 ```
 $ cd tloruby
-$ rake test TESTOPTS='-v'
+$ RUBYLIB=. rake test TESTOPTS='-v'
 ```
