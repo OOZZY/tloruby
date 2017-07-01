@@ -1,11 +1,13 @@
 require 'minitest/autorun'
 require 'tlo/statistics'
 
+EPSILON = Float::EPSILON
+
 describe Tlo::Statistics do
   describe 'Statistics initialize' do
     it 'should initialize statistics' do
       statistics = Tlo::Statistics::Statistics.new
-      assert_equal(0, statistics.size)
+      assert_in_delta(0, statistics.size, EPSILON)
       assert_nil(statistics.sum)
       assert_nil(statistics.mean)
       assert_nil(statistics.min)
@@ -20,28 +22,28 @@ describe Tlo::Statistics do
     it 'should update statistics over one call' do
       statistics = Tlo::Statistics::Statistics.new
       statistics.add(50.0)
-      assert_equal(1, statistics.size)
-      assert_equal(50, statistics.sum)
-      assert_equal(50, statistics.mean)
-      assert_equal(50, statistics.min)
-      assert_equal(50, statistics.max)
-      assert_equal(0, statistics.range)
-      assert_equal(0, statistics.variance)
-      assert_equal(0, statistics.stddeviation)
+      assert_in_delta(1, statistics.size, EPSILON)
+      assert_in_delta(50, statistics.sum, EPSILON)
+      assert_in_delta(50, statistics.mean, EPSILON)
+      assert_in_delta(50, statistics.min, EPSILON)
+      assert_in_delta(50, statistics.max, EPSILON)
+      assert_in_delta(0, statistics.range, EPSILON)
+      assert_in_delta(0, statistics.variance, EPSILON)
+      assert_in_delta(0, statistics.stddeviation, EPSILON)
     end
 
     it 'should update statistics over multiple calls' do
       statistics = Tlo::Statistics::Statistics.new
       statistics.add(50.0)
       statistics.add(100.0)
-      assert_equal(2, statistics.size)
-      assert_equal(150, statistics.sum)
-      assert_equal(75, statistics.mean)
-      assert_equal(50, statistics.min)
-      assert_equal(100, statistics.max)
-      assert_equal(50, statistics.range)
-      assert_equal(625, statistics.variance)
-      assert_equal(25, statistics.stddeviation)
+      assert_in_delta(2, statistics.size, EPSILON)
+      assert_in_delta(150, statistics.sum, EPSILON)
+      assert_in_delta(75, statistics.mean, EPSILON)
+      assert_in_delta(50, statistics.min, EPSILON)
+      assert_in_delta(100, statistics.max, EPSILON)
+      assert_in_delta(50, statistics.range, EPSILON)
+      assert_in_delta(625, statistics.variance, EPSILON)
+      assert_in_delta(25, statistics.stddeviation, EPSILON)
     end
   end
 end
